@@ -2,16 +2,7 @@ import React from "react";
 
 
 class CartItem extends React.Component{
-    constructor(){
-        super();
-        this.state = {
-            price: 999,
-            title: 'Mobile Phone',
-            Qty: 1,
-            img: ''
-        }
-        this.increaseQuantity=this.increaseQuantity.bind(this);
-    }
+    
     increaseQuantity =()=>{
         // console.log('this',this.state);
         // set state form 1
@@ -22,7 +13,7 @@ class CartItem extends React.Component{
         // set state form 2 - if previous state required use this
         this.setState((prevState)=>{
             return{
-                Qty:prevState. Qty+1
+                Qty:prevState.Qty+1
             }
         },()=>{
             console.log("this.state",this.state);
@@ -38,15 +29,17 @@ class CartItem extends React.Component{
             // set state form 2 - if previous state required use this
             this.setState((prevState)=>{
                 return{
-                    Qty:prevState. Qty-1
+                    Qty:prevState.Qty-1
                 }   
             });     
     }
     render (){
-        console.log('render');
-        const{ price,title,Qty}=this.state;
+        console.log('this.props', this.props);
+        const { price, title, Qty } = this.props.product;
+       
         return(
             <div className="cart-item">
+                {this.props.jsx}
               <div className="left-block">
                 <img style={styles.image}/>
                 </div>  
@@ -61,6 +54,7 @@ class CartItem extends React.Component{
                     className="action-icons" 
                     src="https://cdn-icons-png.flaticon.com/128/4315/4315609.png"
                     onClick={this.increaseQuantity}
+                    
                     />
 
                     <img 
@@ -81,7 +75,7 @@ class CartItem extends React.Component{
             </div>
         );
     }
-}
+        }
 
 const styles = {
     image:{
