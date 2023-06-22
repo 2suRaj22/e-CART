@@ -1,22 +1,17 @@
 import React from "react";
 
-
-class CartItem extends React.Component{
-  
-    render (){
-        console.log('this.props', this.props);
-        const { price, title, Qty } = this.props.product;
-        const {
+const CartItem = (props) =>{
+ const { price, title, Qty } = props.product;
+ const {
             product ,
             onIncreaseQuantity,
             onDecreaseQuantity,
-            onhandleDeleteProduct
-              } = this .props;
+            onDeleteProduct
+              } = props;
         return(
             <div className="cart-item">
-                {this.props.jsx}
               <div className="left-block">
-                <img style={styles.image}/>
+                <img style={styles.image} src="product.img"/>
                 </div>  
               <div className="right-block">
                 <div style={{fontSize:25}}>{title}</div>
@@ -43,15 +38,15 @@ class CartItem extends React.Component{
                     alt="delete"  
                     className="action-icons" 
                     src="https://cdn-icons-png.flaticon.com/128/8835/8835400.png"
-                    onClick={()=> onhandleDeleteProduct(product.id)}
+                    onClick={()=> onDeleteProduct(product.id)}
                     />
                 </div>
 
               </div>
             </div>
         );
-    }
         }
+        
 
 const styles = {
     image:{
